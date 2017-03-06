@@ -19,9 +19,16 @@ class DownloadURL:
         data = self.site.read()
         return data
 
-    def __init__(self, url):
+    def set_url(self, url):
         self.url = url
         self.site = request.urlopen(self.url)
+
+    def __init__(self, url=None):
+        if url is not None:
+            self.url = url
+            self.site = request.urlopen(self.url)
+            return
+        self.url = ''
 
 
 class BColors:

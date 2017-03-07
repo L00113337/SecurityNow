@@ -5,7 +5,7 @@ import DownloadURL
 def main():
     # initialize variables
     sn = SecurityNow_Class.SecurityNow()
-    dw = DownloadURL.DownloadURL(url=None)
+    dw = DownloadURL.DownloadURL()
 
     try:
         no_of_ep = int(input('Download to Episode: '))
@@ -31,15 +31,15 @@ def main():
         if downloaded:
             print(DownloadURL.BColors.OKGREEN + 'Successful.' + DownloadURL.BColors.ENDC)
             if trans:
+                print('Transcript ' + str(sn.get_next_ep()) + ' download...', end='', flush=True)
                 dw.set_url(sn.get_url_for_next_ep().get('transcript')[0])
                 downloaded = dw.download_save(sn.get_url_for_next_ep().get('transcript')[1])
                 if downloaded:
-                    print('Transcript ' + str(sn.get_next_ep()) + ' download...', end='', flush=True)
                     print(DownloadURL.BColors.OKGREEN + 'Successful.' + DownloadURL.BColors.ENDC)
                 else:
-                    print(DownloadURL.BColors.WARNING + 'Failed.' + DownloadURL.BColors.ENDC)
+                    print(DownloadURL.BColors.FAIL + 'Failed.' + DownloadURL.BColors.ENDC)
         else:
-            print(DownloadURL.BColors.WARNING + 'Failed.' + DownloadURL.BColors.ENDC)
+            print(DownloadURL.BColors.FAIL + 'Failed.' + DownloadURL.BColors.ENDC)
         sn.update_current()
         sn.write_log()
     print("All Episodes Downloaded.")

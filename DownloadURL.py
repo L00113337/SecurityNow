@@ -5,6 +5,7 @@ import os
 class DownloadURL:
     def download_save(self, fn):
         try:
+            self.site = request.urlopen(self.url)
             data = self.site.read()
             if not os.path.exists('data/Security Now/'):
                 os.makedirs('data/Security Now/')
@@ -21,12 +22,12 @@ class DownloadURL:
 
     def set_url(self, url):
         self.url = url
-        self.site = request.urlopen(self.url)
+        self.site = ''
 
     def __init__(self, url=None):
         if url is not None:
             self.url = url
-            self.site = request.urlopen(self.url)
+            self.site = ''
             return
         self.url = ''
 

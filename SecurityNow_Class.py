@@ -63,6 +63,6 @@ class SecurityNow:
         self.baseAudioURL = 'http://twit.cachefly.net/audio/sn/'
         self.baseTranscriptURL = 'http://grc.com/sn'
         self.baseNotesURL = 'http://grc.com/sn'
-        self.newestEP = 604
+        self.newestEP = 606
         self.build_log()
         self.currentEP = self.read_log()

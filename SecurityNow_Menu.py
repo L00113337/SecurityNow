@@ -62,7 +62,7 @@ def main():
             print(DownloadURL.BColors.FAIL + 'Failed.' + DownloadURL.BColors.ENDC, flush=True)
             failed.append(sn.get_url_for_next_ep().get('audio'))
         sn.update_current()
-        # sn.write_log()
+        sn.write_log()
     print("All Episodes Downloaded.")
     if len(failed) > 0:
         print("All Failed:\n", failed)
